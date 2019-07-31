@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="schrodinger_styling.css">
+</head>
+<body id="body">
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+    <button class="accordion">General</button>
+    <div class="panel">
+      <label class="switch">
+        <input type="checkbox" checked onclick="toggleRunning()" id="onswitch">
+        <span class="switchslider round" id="onText">Stop</span>
+      </label>
+      <br>
+      <span class="custom-dropdown" style="width:100%;">
+        <select id="graphSelect"></select>
+      </span>
+    </div>
+    
+    <button class="accordion">Display</button>
+    <div class="panel" id="displayPanel" style="height:136px;overflow-y:none">
+      <input type="text" class="stateIn" value="State" id="stateIn">
+      <br>
+      <input type="button" value="Load State" class="prettyButton" onclick="reloadPsi()">
+      <br>
+      <div>
+        <input type="range" class="bigslider" id="scaleSlide">
+        <div class="rangeText" style="transform: translateY(-37px);">Scale</div>
+        <input type="range" class="bigslider" id="transSlide" style="transform: translateY(-38px);">
+        <div class="rangeText" style= "transform: translateY(-74px);">Norm <i>t</i></div>
+      </div>
+      
+    </div>
+    
+    <button class="accordion">Vector <i>u</i></button>
+    <div class="panel" id="uPanel" style="margin:0px;overflow-x:none;width:100%">
+      
+    </div>
+    <button class="accordion">Vector <i>v</i></button>
+    <div class="panel" id="vPanel">
+      
+      
+    </div>
+    
+    <button class="accordion">Vector <i>t</i></button>
+    <div class="panel" id="tPanel">
+      
+    </div>
+  </div>
+  <div id="main" style="display: inline-block">
+    <button class="openbtn" onclick="toggleNav()">&#9776; Settings</button> 
+    <div style="width:20px;display:inline-block"></div>
+    <button class="openbtn" onclick="toggleView()">&#9775; Toggle View</button> 
+  </div>
+  <canvas id="DemoCanvas" width="0" height="0"></canvas>
+  <div id="graphDiv"></div>
+  <script src="d3.v3.min.js"></script>
+  <script src="graphdata.js"></script>
+  <script src="mathhelper.js"></script>
+  <script>
+    //------------------------------
+    // Website Scripting
+    //------------------------------
+    
+    var spectrum = ["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"].reverse();
+    
+    var directed = false;
+    var colortype = "norm"; 
+      // "norm" --- color determined by distance from origin 
+      // "real" --- color determined by value real component
+      // "imaginary" -- color determined by value imaginary component
+      
+    var fastrender = false;
+    
+    var acc = document.getElementsByClassName("accordion");
+    for (var i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight){
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+    
+    var navOpen = false;
+    function toggleNav() {
+      if(navOpen) {
+        navOpen = false;
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+      }else{
+        navOpen = true;
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+    }
+    
+    function turnOnRunning() {
+      running=true;
+      document.getElementById("onswitch").checked = true;
+      document.getElementById("onText").innerHTML = "Stop";
+    }
+    
+    function turnOffRunning() {
+      running=false;
+      document.getElementById("onswitch").checked = false;
+      document.getElementById("onText").innerHTML = "Start";
+    }
+    
+    function toggleRunning() {
+      if(running){
+        turnOffRunning();
+      }else{
+        turnOnRunning();
+      }
+    }
+    
+    var view = "graph"; // "graph" --- D3 view     "proj" --- Projection canvas view
+    
+    function graphView() {
+      view = "graph";
+      force.start();
+      canv = document.getElementById("DemoCanvas");
+      canv.width = 0;
+      canv.height = 0;
+      svgEle = document.getElementById("svgEle");
+      svgEle.setAttribute("width",width);
+      svgEle.setAttribute("height",height-120);
+    }
+    
+    function projView() {
+      view = "proj";
+      force.stop();
+      canv = document.getElementById("DemoCanvas");
+      canv.width = width;
+      canv.height = height - 120;
+      svgEle = document.getElementById("svgEle");
+      svgEle.setAttribute("width",0);
+      svgEle.setAttribute("height",0);
+    }
+    
+    function toggleView() {
+      if(view == "graph") {
+        projView();
+      }else{
+        graphView();
+      }
+    }
+    
+    // create form for selecting projection plane
+    // get div objects for the forms
+    var uPanel = document.getElementById('uPanel');
+    var vPanel = document.getElementById('vPanel');
+    var tPanel = document.getElementById('tPanel');
+    var displayPanel = document.getElementById('displayPanel');
+    
+    // get references to a few input elements
+    var stateInput = document.getElementById("stateIn");
+    
+    // create scale input slider
+    var scaleSlide = document.getElementById("scaleSlide");
+    scaleSlide.min = 0;
+    scaleSlide.max = 400;
+    scaleSlide.value = 50;
+    
+    // translate vector length slider
+    var tanSlide = document.getElementById("transSlide");
+    tanSlide.min = 0;
+    tanSlide.max = 5;
+    tanSlide.value = 1;
+    tanSlide.step = 0.1;
+    tanSlide.setAttribute("oninput", "readVecs()");
+    
+    //var width = 960, height = 500;
+    width  = window.innerWidth;
+    height = window.innerHeight;
+    
+  </script>
+  <script src="schrodinger.js"></script>
+</body>

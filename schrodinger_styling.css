@@ -1,0 +1,444 @@
+/* D3 Styling */
+
+rect {
+  fill: none;
+  pointer-events: all;
+}
+
+.node {
+  fill: #000;
+}
+
+.node text {
+pointer-events: none;
+font: 14px sans-serif;
+}
+
+.cursor {
+  fill: none;
+  stroke: brown;
+  pointer-events: none;
+}
+
+.link {
+  stroke: #999;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: transparent;
+  color: #eee;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  white-space: nowrap;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #444;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  /*padding: 0 18px;*/
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  white-space: nowrap;
+}
+
+/* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  -webkit-transition: .4s;
+  transition: .4s;
+  height:50px;
+  vertical-align: middle;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+
+
+/*sliders & such */
+
+
+.slider {
+  -webkit-appearance: none;
+  width: 60px;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2196F3;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2196F3;
+  cursor: pointer;
+}
+
+.bigslider {
+  -webkit-appearance: none;
+  height: 34px;
+  border-radius: 0px;
+  background-color: #333;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-transition: .4s;
+  transition: .4s;
+  width: 100%;
+  margin: 0px;
+}
+
+.bigslider:hover {
+  background-color: #111;
+}
+
+.bigslider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  background: #2196F3;
+  -webkit-transition: .4s;
+  transition: .4s;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.bigslider::-webkit-slider-thumb:hover {
+  background: #0176D3;
+}
+
+.bigslider::-moz-range-thumb {
+  width: 34px;
+  height: 34px;
+  background: #2196F3;
+  cursor: pointer;
+}
+
+.thinslider {
+  -webkit-appearance: none;
+  height: 22px;
+  border-radius: 0px;
+  background-color: #333;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-transition: .4s;
+  transition: .4s;
+  width: 100%;
+  margin: 0px;
+}
+
+.thinslider:hover {
+  background-color: #111;
+}
+
+.thinslider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: #2196F3;
+  -webkit-transition: .4s;
+  transition: .4s;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.thinslider::-webkit-slider-thumb:hover {
+  background: #0176D3;
+}
+
+.thinslider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: #2196F3;
+  cursor: pointer;
+}
+
+.rangeText {
+  text-align:center;
+  height:34px;
+  width:100%;
+  font-size: 25px;
+  color: white;
+  font-family: Tahoma;
+  padding: 0px;
+  pointer-events: none;
+  /*padding-top:0px;*/
+}
+
+.rangeTextSmall {
+  text-align:center;
+  height:16px;
+  width:20%;
+  font-size: 16px;
+  color: white;
+  font-family: Tahoma;
+  padding: 0px;
+  pointer-events: none;
+  display: inline-block;
+  vertical-align:top;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switchslider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f44336;
+  -webkit-transition: .4s;
+  transition: .4s;
+  color: white;
+  font-size: 25px;
+  text-decoration: none;
+  text-align: center;
+  font-family: Tahoma;
+}
+
+.switchslider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .switchslider {
+  background-color: #2196F3;
+}
+
+/*input:focus + .switchslider {
+  box-shadow: 0 0 1px #2196F3;
+}*/
+
+input:checked + .switchslider:before {
+  -webkit-transform: translateX(216px);
+  -ms-transform: translateX(216px);
+  transform: translateX(216px);
+}
+
+/* Rounded sliders */
+.switchslider.round {
+  /*border-radius: 34px;*/
+}
+
+.switchslider.round:before {
+  border-radius: 50%;
+}
+
+.square {
+  width: .7em;
+  height: .7em;
+  margin: .5em;
+  display: inline-block;
+}
+
+/* Custom dropdown */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  outline:none;
+  /*vertical-align: middle;*/
+}
+
+.custom-dropdown select {
+  background-color: #1abc9c;
+  color: #fff;
+  font-size: 25px;
+  /*padding: .5em;*/
+  padding-left: 110px;	
+  /*padding-left: 2.5em;*/
+  border: 0;
+  margin: 0;
+  border-radius: 0px;
+  height:34px;
+  width:100%;
+  text-indent: 0.01px;
+  text-overflow: '';
+  /*Hiding the select arrow for firefox*/
+  -moz-appearance: none;
+  /*Hiding the select arrow for chrome*/
+  -webkit-appearance:none;
+  /*Hiding the select arrow default implementation*/
+  appearance: none;
+}
+/*Hiding the select arrow for IE10*/
+.custom-dropdown select::-ms-expand {
+    display: none;
+}
+
+.custom-dropdown::before,
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /*border-radius: 0 3px 3px 0;*/
+  background-color: rgba(0,0,0,.2);
+}
+
+.custom-dropdown::after {
+  color: rgba(0,0,0,.6);
+}
+
+.prettyButton {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: #2196F3;
+  color: white;
+  width:100%;
+  border: none;
+  outline:none;
+  height: 34px;
+}
+
+.prettyButton:hover{
+  background-color: #0176D3;
+}
+
+.prettyButton:active{
+  background-color: #eee;
+}
+
+.stateIn {
+  box-sizing: border-box;
+  background-color: #1abc9c;
+  color: white;
+  width:100%;
+  border:none;
+  outline:none;
+  padding-left: 12px;
+  font-size:25px;
+  height: 34px;
+  text-align:center;
+}
