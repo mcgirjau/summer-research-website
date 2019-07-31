@@ -128,16 +128,48 @@ footer p {
     padding: 5px;
 }
 
+.photo-container {
+    position: relative;
+}
+  
+.photo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+  
+.photo-overlay {
+    position: absolute; 
+    bottom: 0; 
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1; 
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+  
+.photo-container:hover .photo-overlay {
+    opacity: 1;
+}
+
 .photo {
     max-width: 100%;
     max-height: 100%;
     margin-bottom: 5px;
     margin-top: 10px;
-    transition: all 0.3s;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-.photo:hover {
+.photo-container {
+    transition: all 0.3s;
+}
+
+.photo-container:hover {
     transform: scale(1.02);
 }
 
