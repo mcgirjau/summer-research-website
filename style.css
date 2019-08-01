@@ -1,3 +1,7 @@
+/* ---------------------------------------------------
+    FONTS
+----------------------------------------------------- */
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 @font-face {
@@ -5,40 +9,31 @@
     src: url("adam.otf") format("opentype");
 }
 
+/* ---------------------------------------------------
+    BODY
+----------------------------------------------------- */
+body,
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
 }
 
-h3 {
-    padding: 10px;
-}
-
-#main-title {
-    color: #527F9C;
-}
-
-h1 {
-    padding-top: 100px;
-    font-family: Adam, sans-serif;
-    font-size: 3em;
-}
-
-#page1, #page2, #page3, #page4, #page5, #page6, #page7 {
-    padding-top: 30px;
+/* Content styling */
+#content {
+    width: 100%;
+    padding: 20px;
     min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1vw;
 }
 
-.left {
-    align-content: left;
-    text-align: left;
-}
-
-.right{
-    align-content: right;
-    text-align: right;
-}
-
+/* Header styling */
 header {
     text-align: center;
     margin-left: auto;
@@ -47,16 +42,83 @@ header {
     padding: 30px 30px 15px 30px;
 }
 
-header h1, header h2, header h4 {
-    text-transform: uppercase;
-    padding-top: 0px;
+/* Main title styling */
+#main-title {
+    color: #527F9C;
+    font-size: 4em;
 }
 
-.content {
+/* Section headings */
+h1 {
+    padding-top: 100px;
+    font-family: Adam, sans-serif;
+    font-size: 4em;
+}
+
+/* Subsection headings */
+h3 {
+    font-size: 2.5em;
+    text-align: left;
+    padding-top: 5px;
+}
+
+h5 {
+    text-align: left;
+    font-size: 1.5em;
+}
+
+h6 {
+    font-size: 1.2em;
+}
+
+/* Header headings */
+header h1,
+header h2,
+header h3 {
+    text-transform: uppercase;
+    padding-top: 0px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 3em;
+}
+
+header h3 {
+    font-size: 2em;
+}
+
+/* Page styling */
+#page1,
+#page2,
+#page3,
+#page4,
+#page5,
+#page6,
+#page7 {
+    padding-top: 30px;
+    min-height: 100vh;
+}
+
+/* Left-aligned sections */
+.left {
+    align-content: left;
+    text-align: left;
+}
+
+/* Right-aligned sections */
+.right{
+    align-content: right;
+    text-align: right;
+}
+
+/* Section styling */
+.section {
     background: rgba(255, 255, 255, 0.9);
     padding: 20px;
 }
 
+/* Paragraph styling */
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -65,6 +127,7 @@ p {
     text-align: justify;
 }
 
+/* Link styling */
 a,
 a:hover,
 a:focus {
@@ -73,47 +136,39 @@ a:focus {
     transition: all 0.3s;
 }
 
+/* Navigation bar styling */
 .navbar {
     padding: 15px 10px;
     background: #fff;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     position: sticky;
     top: 10px;
     z-index: 998;
 }
 
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-}
-
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
-}
-
+/* Sidebar collapse */
 #sidebarCollapse {
     box-shadow: 0px 3px 7px 0px #404040;
 }
 
-.btn-info {
+/* Menu button */
+.btn-menu {
     color: #fff;
     background-color: #527F9C;
     border-color: #527F9C;
 }
 
+/* Amherst College seal */
 #seal {
     height: 30px;
     width: auto;
 }
 
+/* Footer styling */
 footer {
     left: 0;
     bottom: 0;
@@ -125,59 +180,63 @@ footer {
     opacity: 0.9
 }
 
+/* Footer content */
 footer p {
     padding: 5px;
 }
 
+/* Photo container */
 .photo-container {
     position: relative;
+    transition: all 0.3s;
 }
   
+/* Photo styling */
 .photo {
     display: block;
-    width: 100%;
-    height: auto;
-}
-  
-.photo-overlay {
-    position: absolute; 
-    bottom: 0; 
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.5); /* Black see-through */
-    color: #f1f1f1; 
-    width: 100%;
-    transition: .5s ease;
-    opacity:0;
-    color: white;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
-}
-  
-.photo-container:hover .photo-overlay {
-    opacity: 1;
-}
-
-.photo {
     max-width: 100%;
     max-height: 100%;
     margin-bottom: 5px;
     margin-top: 10px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
-
-.photo-container {
-    transition: all 0.3s;
+  
+/* Photo overlay */
+.photo-overlay {
+    position: absolute; 
+    bottom: 0; 
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); 
+    color: #f1f1f1; 
+    max-height: 30%;
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    font-size: 1vw;
 }
-
+  
+/* Hovering over photo */
 .photo-container:hover {
     transform: scale(1.02);
 }
 
+.photo-container:hover .photo-overlay {
+    opacity: 1;
+}
+
+/* Photo caption */
 figcaption {
     font-size: 0.7em;   
 }
 
+/* Abstracts styling */
 .abstract {
     text-align: justify;
     font-size: 0.9em;
@@ -185,18 +244,59 @@ figcaption {
     margin: auto;
 }
 
-h5 {
-    text-align: left;
-}
-
+/* Unordered lists */
 .unstyled {
     list-style: none;
+}
+
+/* Professor's homepage */
+#ivan {
+    position: relative;
+}
+
+/* Hover over text */
+.hoverover:hover {
+    color: #527F9C;
+}
+
+.hovertext {
+    visibility: hidden;
+    font-size: 0.7em;
+    background-color: #527F9C;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px 0px;
+    position: absolute;
+    z-index: 1;
+    top: 130%;
+    left: 50%;
+    margin-left: -50px;
+    opacity: 0;
+    transition: opacity 0.7s;
+}
+
+.hovertext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #527F9C transparent;
+}
+
+.hoverover:hover .hovertext {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
+/* Sidebar styling */
 #sidebar {
     width: 250px;
     position: fixed;
@@ -215,6 +315,7 @@ h5 {
     left: 0;
 }
 
+/* Close sidebar */
 #dismiss {
     width: 35px;
     height: 35px;
@@ -235,6 +336,7 @@ h5 {
     color: #6595B1;
 }
 
+/* Content overlay when sidebar is open */
 .overlay {
     display: none;
     position: fixed;
@@ -324,28 +426,10 @@ a.article:hover {
 }
 
 /* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-#content {
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-    transition: all 0.3s;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-body, html {
-    height: 100%;
-}
-
-/* ---------------------------------------------------
-    PARALLAX
+    PARALLAX SCROLLING EFFECT
 ----------------------------------------------------- */
   
-.parallax { 
+.parallax {
     /* The image used */
     /* background-image: url("background.png"); */
     background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("background.png");
@@ -355,11 +439,4 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-/* Turn off parallax scrolling for all tablets and phones. Increase/decrease the pixels if needed */
-@media only screen and (max-device-width: 1366px) {
-    .parallax {
-      background-attachment: scroll;
-    }
 }
