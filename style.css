@@ -295,6 +295,13 @@ figcaption {
     opacity: 1;
 }
 
+.code {
+    font-family: 'Consolas';
+    color: #527F9C;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */

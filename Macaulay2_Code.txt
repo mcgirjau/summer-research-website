@@ -1,0 +1,161 @@
+loadPackage "Graphs"
+
+Bridge1 = (Graph,HGraph,v,w) -> (
+	addEdges'(disjointUnion({G,H}), {{{v,0},{w,1}}})
+	)
+	
+SpecLaplacian = (Graph) -> (
+	sort toList(eigenvalues(laplacianMatrix(Graph)))
+	)
+
+glue = (A, B, dA, dB) -> (
+	 GLUE = disjointUnion({A,B});
+	 (0..(#dA-1)) / (i -> (
+	   nb = neighbors(B, dB#i);
+	   origin = {dA#i, 0};
+	   nb / (j -> (
+		 GLUE = addEdges'(GLUE, {{origin, {j, 1}}})
+	   ));
+	 ));
+	 GLUE = deleteVertices(GLUE, dB / (i -> ({i, 1})));
+	 GLUE
+	)
+
+Entropy = (Graph) -> (
+	VL = SpecLaplacian(Graph);
+	VL = apply(VL,abs);
+	Sp = 0;
+	for i from 0 to #VL-1 do (
+		if (VL#i!=0) then (
+		Sp = Sp - (VL#i * log(VL#i))
+		)
+		);
+	Sp
+	)
+
+EntropyM = (Matrix) -> (
+	VL = sort toList(eigenvalues(Matrix));
+	VL = apply(VL,abs);
+	Sp = 0;
+	for i from 0 to #VL-1 do (
+		if (VL#i!=0) then (
+		Sp = Sp - (VL#i * log(VL#i))
+		)
+		);
+	Sp
+	)
+
+CharPoly = (G) -> (
+	R=QQ[a];
+	det matrix((mutableMatrix(promote(laplacianMatrix G, R)) - a*mutableIdentity(R,#entries laplacianMatrix G)))
+	)
+	
+CoefCharPoly = (G) -> (
+	Coef = {};
+	for i from 0 to (degree(CharPoly(G)))_0-1 do (
+		Coef = Coef|{coefficient(a^((degree(CharPoly(G)))_0-i),CharPoly(G))}
+	);
+	Coef
+	)		
+	
+GrowHair = (G',numhair) -> (
+	for i from 1 to numhair do (
+		G' = addEdges'(addVertices(G',{#vertices(G')}),{{i,#vertices(G')}});
+		);
+	G'
+	)	
+	
+Fiedler = (G) -> (
+	FF = {};
+	for i from 0 to #(SpecLaplacian(G))-1 do (
+		if ((SpecLaplacian(G))#i>0.00005) then (
+			FF = FF|{(SpecLaplacian(G))#i}
+		)
+	);
+	F=value(toString(FF));
+	F=sort(F);
+	F#0
+	)
+	
+RRR=RR[a]
+	
+II = (n) -> (
+	omg = "diagonalMatrix{1";
+	for j from 1 to n-1 do (
+		omg = omg | ",1"
+	);
+	omg = omg | "}";
+	promote((value(omg)),RRR)
+	)
+	
+matrixexp = (M,order) -> (
+	iden = II(#entries(M));
+	base = promote(iden,RRR);
+	if (order==0) then (
+		base
+	) else ( 
+		for n from 1 to order do (
+			base = base + (1/n!)*((promote(M,RRR)))^n
+			)
+		);
+		base
+	)
+
+SchEqn = (Graph, StateVertSet, order, tiime) -> (
+	State = matrix apply(StateVertSet,i->{i});
+	Solu=matrixexp((promote((laplacianMatrix(Graph)),RRR))*a,order)*promote(State,RRR);
+	Ori=Solu;
+	if (toString(tiime)!=toString(a)) then (
+		Solu=matrix apply(entries Solu,i->{sub(i#0,a=>tiime)})
+	);
+	Solu
+	)
+	
+DegreeList = (G) -> (
+	M = degreeMatrix G;
+	DegList = {};
+	for i from 0 to #entries(M)-1 do (
+		DegList = DegList | {(entries(M))#i#i}
+	);
+	DegList
+	)
+
+CheckDisjointVertices = (Graph) -> (
+	for n from 0 to #(vertices Graph)-1 do(
+			if (degree(Graph,(vertices Graph)#n)==0) then (
+			K = true
+		) else (
+			K = false;
+			break K
+	);
+	);
+	K
+	)
+	
+Analyze = (G,H,dG,dH) -> (
+	KGlued = glue(G,H,dG,dH);
+	KG = G;
+	KH = H;
+	INTERFACEG = inducedSubgraph(G,dG);
+	INTERFACEH = inducedSubgraph(H,dH);
+	ANTIdG = edges KG; 
+	for k from 0 to #(edges INTERFACEG)-1 do(
+		ANTIdG=delete((edges INTERFACEG)#k, ANTIdG)
+	);
+	ANTIdH = edges KH; 
+	for k from 0 to #(edges INTERFACEH)-1 do(
+		ANTIdH=delete((edges INTERFACEH)#k, ANTIdH)
+	);
+	ANTIKG = graph(ANTIdG);
+	ANTIKH = graph(ANTIdH);
+	ConnectionBetweenGandInterface = inducedSubgraph(G,toList(set(vertices(INTERFACEG))*set(vertices(ANTIKG))));
+	ConnectionBetweenHandInterface = inducedSubgraph(H,toList(set(vertices(INTERFACEH))*set(vertices(ANTIKH))));
+	print("G connected to Interface via disjoint vertices?: "|toString(CheckDisjointVertices(ConnectionBetweenGandInterface)));
+	print("H connected to Interface via disjoint vertices?: "|toString(CheckDisjointVertices(ConnectionBetweenHandInterface)));
+	print("Entropy of G glue H: "|toString(Entropy KGlued));
+	print("Entropy of G: "|toString(Entropy KG));
+	print("Entropy of G-Int: "|toString(Entropy ANTIKG));
+	print("Entropy of H: "|toString(Entropy KH));
+	print("Entropy of H-Int: "|toString(Entropy ANTIKH));
+	print("Entropy of Interface: "|toString(Entropy INTERFACEG));
+	)

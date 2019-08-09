@@ -39,7 +39,8 @@
                     <i class="fas fa-times"></i>
                 </div>
                 <div class="sidebar-header">
-                    <h4>Quantum Entropy</h4>
+                    <p></p>
+                    <h3>Quantum Entropy</h3>
                     <div>Amherst College<br>Summer 2019</div>
                 </div>
                 <ul class="list-unstyled components">
@@ -102,14 +103,13 @@
                             <h1 class>PROJECT OVERVIEW</h1>
                             <div class="section">
                                 <div id="intro">
-                                    <p>The objective of this Summer Research Project is to study the link between various concepts in Mathematical Physics such as entropy, quantum states, Schrödinger's equation, etc. and Graph Theory. We are exposed to networks in our every-day life: social networks, airports, and their connections (add more examples). Some questions appear naturally:</p>
+                                    <p>The objective of this Summer Research Project is to study the link between various concepts in Mathematical Physics such as entropy, quantum states, Schrödinger's equation, etc. and Graph Theory. We are exposed to networks in our every-day life: social networks, airports, road maps, the Internet... Some questions appear naturally:</p>
                                     <ol>
                                         <li>How complex is the network?</li>
-                                        <li>How many different paths do we have to go from one place to another.</li>
-                                        <li>How efficient information "travels" through the network?</li>
-                                        <li>Add more questions.</li>
+                                        <li>How many different paths do we have to go from one place to another?</li>
+                                        <li>How efficiently does information travel through the network?</li>
                                     </ol>
-                                    <p>It turns out <a href = "The_Laplacian.pdf" target = "_blank">the Graph Laplacian</a>provides answers to some of these questions! By using the techniques of Mathematical Physics and Statistical Analysis, we intend to explore further the connection between quantum mechanical systems and Graph Theory.</p>
+                                    <p>It turns out <a href = "The_Laplacian.pdf" target = "_blank">the Graph Laplacian</a> provides answers to some of these questions! By using the techniques of Mathematical Physics and Statistical Analysis, we intend to explore further the connection between quantum mechanical systems and Graph Theory.</p>
                                 </div>
                                 <hr>
                                 <div id="what-is">
@@ -237,6 +237,299 @@
                         <div class="left col-10">
                             <h1>CODE</h1>
                             <div class="section">
+                                <h3>Macaulay 2</h3>
+                                <button type="button" class="btn btn-menu">
+                                    <a href="Macaulay2_Code.txt" download target="_blank">Download Macaulay2 Code</a>
+                                </button>
+                                <p></p>
+                                <div class="instructions">
+                                    <p>Read more about the Macaulay2 language <a href="http://www2.macaulay2.com/Macaulay2/" target="_blank">here</a>.</p>
+                                    <p>You can compile and run Macaulay2 code in the browser here.</p>
+                                    How to use the Macaulay2 code:
+                                    <ol>
+                                        <li>Copy and paste all of "Macaulay2_Code.txt" into Macaulay2 and hit enter. Wait roughly ~10 seconds until there's an output and it's done compiling.</li>
+                                        <li>Enter graph as follows: for the case of, say, a "triangle", we have:
+                                            <ul>
+                                                <li><span class="code">V = {a, b, c}&emsp;--hit enter</span></li>
+                                                <li><span class="code">E = {(a, b), (b, c), (c, a)}&emsp;--hit enter</span></li>
+                                                <li><span class="code">G = (V, E)&emsp;--hit enter</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>Now G denotes your graph and you may use the following commands. Everywhere G is mentioned, it is referring to the above definition.</li>
+                                    </ol>
+                                    
+                                    <h6>Command documentation</h6>
+                                    <ul>
+                                        <li>
+                                            <span class="code">assign(G, vertexassignments, edgeassignments)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
+                                                <li><span class="code">vertexassignments</span>, a List, the list of assignmenets to verticies for the discrete function</li>
+                                                <li><span class="code">edgeassignments</span>, a List, the list of assignments to edges for the discrete function</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>N/A</li>
+                                            </ul>
+                                            Notes:
+                                            <ul>
+                                                <li>This creates a discrete function on the vertices of a graph.</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span class="code">fn(x1, x2)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>(v,0), a Sequence, where v is a vertex of the graph G</li>
+                                                <li>(v1,v2), a Sequence, where (v1,v2) is an edge of the graph G</li>
+                                            </ul>                                            
+                                            Outputs:
+                                            <ul>
+                                                <li>Evaluation of the discrete function assigned on the graph G at the vertex v or edge (v1,v2)</li>
+                                            </ul>                                            
+                                            Notes:
+                                            <ul>
+                                                <li>Must use "assign" function before using this.</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span class="code">MorseSetOnElement(G, fn, x1, x2)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>fn, a discrete function (just enter fn if assignment already provided)</li>
+                                                <li>(v,0), a Sequence, where v is a vertex of the graph G -- OR -- (v1,v2), a Sequence, where (v1,v2) is an edge of the graph G</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>Provides the Morse set (class List) for a single vertex or edge of G under the assignment provided. Note that only one set gets outputted as the other for either an edge or vertex is always empty (due to the ordering on the union of V and E)</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span class="code">isDiscreteMorseFunction(G, fn)</span><br>
+                                            Inputs:
+                                            - G, a Sequence (as defined above)
+                                            - fn, a discrete function (just enter fn if assignment already provided)
+                                            
+                                            Outputs:
+                                            - Outputs true if discrete function is Morse, false if not Morse.
+                                        </li>
+                                        <li>
+                                            <span class="code">CritPts(G, fn)</span><br>
+                                            Inputs:
+                                            - G, a Sequence (as defined above)
+                                            - fn, a discrete function (just enter fn if assignment already provided)
+                                            
+                                            Outputs:
+                                            - The critical points (verticies and edges) of G (class List).
+                                        </li>
+                                        <li>
+                                            <span class="code">toHyperGraph(G)</span><br>
+                                            Inputs:
+                                            - G, a Sequence (as defined above)
+                                            
+                                            Outputs:
+                                            - The HyperGraph (class) formation of G.
+                                            
+                                            Notes:
+                                            Very useful! Allows one to use all the commands found here with the output:
+                                            http://www2.macaulay2.com/Macaulay2/doc/Macaulay2-1.12/share/doc/Macaulay2/EdgeIdeals/html/___Hyper__Graph.html 
+                                        </li>
+                                        <li>
+                                            <span class="code">toRegGraph(G)</span><br>
+                                            Inputs:
+                                            - G, a Sequence (as defined above)
+                                            
+                                            Outputs:
+                                            - The Graph (class) formation of G.
+                                            
+                                            Notes:
+                                            Very useful! Allows one to use all the commands found here with the output:
+                                            http://www2.macaulay2.com/Macaulay2/doc/Macaulay2-1.12/share/doc/Macaulay2/EdgeIdeals/html/___Graph.html
+                                        </li>
+                                        <li>
+                                            <span class="code">AdjacencyMatrix(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The adjacency matrix of G (class Matrix).</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span class="code">DirectedIncidenceMatrix(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The incidence matrix of G (class Matrix).</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <span class="code">evenLaplacian(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The even Laplacian of G (class Matrix).</li>
+                                            </ul>
+                                        </li>    
+                                        <li>
+                                            <span class="code">oddLaplacian(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The odd Laplacian of G (class Matrix).</li>
+                                            </ul>
+                                        </li>       
+                                        <li>
+                                            <span class="code">H0(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The cohomology group H^0 of G (class Module).</li>
+                                            </ul>
+                                        </li>    
+                                        <li>
+                                            <span class="code">H1(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The cohomology group H^1 of G (class Module).</li>
+                                            </ul>
+                                        </li>    
+                                        <li>
+                                            <span class="code">h0(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The 0th Betti number of G (class Element).</li>
+                                            </ul>
+                                        </li>   
+                                        <li>
+                                            <span class="code">h1(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The 1st Betti number of G (class Element).</li>
+                                            </ul>
+                                        </li>   
+                                        <li>
+                                            <span class="code">II(n)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>n, an Element (i.e. a number)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>An n x n identity matrix (class Matrix).</li>
+                                            </ul>
+                                        </li>    
+                                        <li>
+                                            <span class="code">complexify(M)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>M, a Matrix</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>A matrix with domain and range expanded from integers to the complex numbers (class Matrix).</li>
+                                            </ul>
+                                        </li>  
+                                        <li>
+                                            <span class="code">rationalize(M)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>M, a Matrix</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>A matrix with domain and range expanded from integers to the rational numbers (class Matrix).</li>
+                                            </ul>
+                                        </li>   
+                                        <li>
+                                            <span class="code">matrixexp(M, order)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>M, a Matrix</li>
+                                                <li>order, an Element (i.e. a number)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The exponentiation of the matrix M to the order given (class Matrix).</li>
+                                            </ul>
+                                        </li>     
+                                        <li>
+                                            <span class="code">EulerChar(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The Euler characteristic of the graph (class Element).</li>
+                                            </ul>
+                                        </li>    
+                                        <li>
+                                            <span class="code">SpecELaplacian(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The spectrum of the even Laplacian (class Matrix).</li>
+                                            </ul>
+                                        </li>  
+                                        <li>
+                                            <span class="code">SpecOLaplacian(G)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The spectrum of the odd Laplacian (class Matrix).</li>
+                                            </ul>
+                                        </li>   
+                                        <li>
+                                            <span class="code">Kronecker(G, H)</span><br>
+                                            Inputs:
+                                            <ul>
+                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>H, a Sequence (as defined above) (another graph)</li>
+                                            </ul>
+                                            Outputs:
+                                            <ul>
+                                                <li>The Kronecker product of the two graphs (class Matrix).</li>
+                                            </ul>
+                                        </li>   
+                                    </ul>
+                                </div>
+
+                                <h3>Mathematica</h3>
 
                             </div>
                         </div>
@@ -261,6 +554,16 @@
                                             </div>
                                         </div>
                                     </a>
+                                </div>
+                                <hr>
+                                <h3>Papers</h3>
+                                <div class="row">
+                                    <div class="col-6">
+
+                                    </div>
+                                    <div class="col-6">
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -333,7 +636,7 @@
                                 <div class="row">
                                     <div class="col abstract">
                                         <h5>The Mathematics of Quantum Mechanics and Networks<br>(Prof. Ivan Contreras)</h5>
-                                        <p></p>
+                                        <p>ABSTRACT: Mathematical Physics is a fascinating area of science that brings together different perspectives on how we understand the Physics that rules our world. This talk provides a gentle overview of a graph theoretical model of Quantum Mechanics, as an example of how we can use tools from Linear Algebra and Calculus to understand the basic principles of Quantum Mechanics.</p>
                                     </div>
                                     <div class="col">
                                         <a href="The_Mathematics_of_Quantum_Mechanics_and_Networks.pdf" target="_blank">
@@ -345,6 +648,25 @@
                                             </div>
                                         </a>
                                         <figcaption>Prof. Ivan Contreras - The Mathematics of Quantum Mechanics and Networks</figcaption>
+                                    </div>
+                                </div>
+                                <hr>
+                                <h3>Mathematics Undergraduate Colloquium (Yale University, August 2019)</h3>
+                                <div class="row">
+                                    <div class="col abstract">
+                                        <h5>Quantum Mechanics and the Shape of Graphs<br>(Prof. Ivan Contreras)</h5>
+                                        <p>ABSTRACT: Quantum Physics has revolutionized the way we understand our world. Since the beginning of the 20th century, beautiful Mathematics has been devised and implemented in order to achieve such success. This talk intends to give an overview of a discretized model of Quantum Mechanics: the Schrödinger equation on graphs. We will use the combinatorial graph Laplacian to describe certain properties of finite graphs such as topological invariants, number of generalized walks, and entropy.  No prior knowledge of Physics or Graph Theory will be assumed.</p>
+                                    </div>
+                                    <div class="col">
+                                        <a href="#slides" target="_blank">
+                                            <div class="photo-container">
+                                                <img class="photo" src="placeholder.png">
+                                                <div class="photo-overlay">
+                                                    <div class="text">See the Beamer slides</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <figcaption>Prof. Ivan Contreras - Quantum Mechanics and the Shape of Graphs</figcaption>
                                     </div>
                                 </div>
                             </div>
@@ -360,8 +682,13 @@
                         <div class="right col-10">
                             <h1>REFERENCES</h1>
                             <div class="section">
-                                <ul>
-                                    <li>Minello, Giorgia, et al. “On the Von Neumann Entropy of Graphs.” Journal of Complex Networks, no. 00, 23 Jan. 2018, doi:10.1093/comnet/cny028.</li>
+                                <ul class="unstyled">
+                                    <li>Minello, Giorgia, et al. <em>On the Von Neumann Entropy of Graphs</em>, Journal of Complex Networks, no. 00, 23 Jan. 2018, doi:10.1093/comnet/cny028.</li>
+                                    <li>C.  Yu.Super-walk Formulae for Even and Odd Laplacians in Finite Graphs. Rose-Hulman Undergrad-uate Mathematics Journal:  Vol. 18:  Iss. 1, Article 16 (2017)</li>
+                                    <li>F. Sanchez. Eigenvalues  and  Eigenvectors  of  Subdirect  Sums. Proceedings of the 9th WSEAS Interna-tional Conference on Applied Mathematics, Istanbul, Turkey (2006)</li>
+                                    <li>I. Contreras, B.  Xu.The Graph Laplacian and Morse InequalitiesPacific Journal of Mathematics, Vol.300 (2019), No. 2, 331 - 345</li>
+                                    <li>L.   Han, E.   Hancock,   R. Wilson.Characterizing  Graphs  Using  Approximate  von  Neumann  Entropy.Pattern Recognition and Image Analysis (2011), p. 484-491</li>
+                                    <li>R. Forman.A User’s Guide to Discrete Morse TheoryS ́eminaire Lotharingien de Combinatoire 48 (2002)</li>
                                 </ul>
                             </div>
                         </div>
