@@ -296,7 +296,7 @@ figcaption {
 }
 
 .code {
-    font-family: 'Consolas';
+    font-family: monospace;
     color: #527F9C;
     font-weight: bold;
     font-size: 1.1em;
