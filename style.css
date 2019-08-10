@@ -118,13 +118,18 @@ header h3 {
     padding: 20px;
 }
 
-/* Paragraph styling */
-p {
+/* Fancy paragraph styling */
+.fancy {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
-    font-weight: 300;
+    /* font-weight: 300; */
     line-height: 1.7em;
     text-align: justify;
+}
+
+/* List styling */
+ul {
+    list-style-type: circle;
 }
 
 /* Link styling */
@@ -295,10 +300,23 @@ figcaption {
     opacity: 1;
 }
 
+/* Collapsible code sections */
+.collapsible:hover {
+    cursor: pointer;
+}
+  
+.inside {
+    padding: 0px 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: rgba(213, 226, 234, 0.7);
+}
+
+/* Code chunks */
 .code {
     font-family: monospace;
-    color: #527F9C;
-    font-weight: bold;
+    color: #47748b;
     font-size: 1.1em;
 }
 

@@ -103,18 +103,18 @@
                             <h1 class>PROJECT OVERVIEW</h1>
                             <div class="section">
                                 <div id="intro">
-                                    <p>The objective of this Summer Research Project is to study the link between various concepts in Mathematical Physics such as entropy, quantum states, Schrödinger's equation, etc. and Graph Theory. We are exposed to networks in our every-day life: social networks, airports, road maps, the Internet... Some questions appear naturally:</p>
-                                    <ol>
+                                    <p class="fancy">The objective of this Summer Research Project is to study the link between various concepts in Mathematical Physics such as entropy, quantum states, Schrödinger's equation, etc. and Graph Theory. We are exposed to networks in our every-day life: social networks, airports, road maps, the Internet... Some questions appear naturally:</p>
+                                    <ol class="fancy">
                                         <li>How complex is the network?</li>
                                         <li>How many different paths do we have to go from one place to another?</li>
                                         <li>How efficiently does information travel through the network?</li>
                                     </ol>
-                                    <p>It turns out <a href = "The_Laplacian.pdf" target = "_blank">the Graph Laplacian</a> provides answers to some of these questions! By using the techniques of Mathematical Physics and Statistical Analysis, we intend to explore further the connection between quantum mechanical systems and Graph Theory.</p>
+                                    <p class="fancy">It turns out <a href = "The_Laplacian.pdf" target = "_blank">the Graph Laplacian</a> provides answers to some of these questions! By using the techniques of Mathematical Physics and Statistical Analysis, we intend to explore further the connection between quantum mechanical systems and Graph Theory.</p>
                                 </div>
                                 <hr>
                                 <div id="what-is">
                                     <h3>What is...?</h3>
-                                    <br>
+                                    <p class="fancy">Brief introductions to key concepts related to our research written by members of our team, plus a guide to the typesetting software used throughout, \(LaTeX\).</p>
                                     <div class="row">
                                         <div class="col-3">
                                             <a href="The_Laplacian.pdf" target = "_blank">
@@ -214,8 +214,8 @@
                             <h1>VISUALIZATIONS</h1>
                             <div class="section">
                                 <h3>The Phase Space Visualization of Schrödinger's Equation</h3>
-                                <p>Phase space is an imaginary “space” representing the system. The state of the system is represented as a single point. For a graph with \(n\) vertices at time \(t\), \(\Psi\) is an \(n\)-dimensional complex vector. Therefore the state is a unique point in \(2n\)-dimensional real space. Schrödinger's equation describes the movement of that point.</p>
-                                <p>
+                                <p class="fancy">Phase space is an imaginary “space” representing the system. The state of the system is represented as a single point. For a graph with \(n\) vertices at time \(t\), \(\Psi\) is an \(n-\)dimensional complex vector. Therefore the state is a unique point in \(2n-\)dimensional real space. Schrödinger's equation describes the movement of that point.</p>
+                                <p class="fancy">
                                     Instructions:
                                 </p>
                                 <button type="button" class="btn btn-menu">
@@ -224,7 +224,7 @@
                             </div>
                             <div class="section">
                                 <h3>Schrödinger's Equation on a Graph</h3>
-                                <p>*Andrew Moore is still working on it*</p>
+                                <p class="fancy">*Andrew Moore is still working on it*</p>
                             </div>
                         </div>
                     </div>
@@ -239,7 +239,7 @@
                             <div class="section">
                                 <h3>Macaulay 2</h3>
                                 <button type="button" class="btn btn-menu">
-                                    <a href="Macaulay2_Code.txt" download target="_blank">Download Macaulay2 Code</a>
+                                    <a href="Macaulay2_Code.txt" download>Download Macaulay2 Code [.txt]</a>
                                 </button>
                                 <p></p>
                                 <div class="instructions">
@@ -247,7 +247,7 @@
                                     <p>You can compile and run Macaulay2 code in the browser here.</p>
                                     How to use the Macaulay2 code:
                                     <ol>
-                                        <li>Copy and paste all of "Macaulay2_Code.txt" into Macaulay2 and hit enter. Wait roughly ~10 seconds until there's an output and it's done compiling.</li>
+                                        <li>Copy and paste all of <a href="Macaulay2_Code.txt" download>Macaulay2_Code.txt</a> into Macaulay2 and hit enter. Wait roughly ~10 seconds until there's an Output and it's done compiling.</li>
                                         <li>Enter graph as follows: for the case of, say, a "triangle", we have:
                                             <ul>
                                                 <li><span class="code">V = {a, b, c}&emsp;--hit enter</span></li>
@@ -258,17 +258,18 @@
                                         <li>Now G denotes your graph and you may use the following commands. Everywhere G is mentioned, it is referring to the above definition.</li>
                                     </ol>
                                     
-                                    <h6>Command documentation</h6>
-                                    <ul>
-                                        <li>
-                                            <span class="code">assign(G, vertexassignments, edgeassignments)</span><br>
-                                            Inputs:
+                                    <h4>Command Documentation</h4>
+                                    <p>Click on any command to view details about its usage.</p>
+                                    <div class="collapsible"><span class="code">assign(G, vertexassignments, edgeassignments)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
                                                 <li><span class="code">G</span>, a Sequence (as defined above)</li>
-                                                <li><span class="code">vertexassignments</span>, a List, the list of assignmenets to verticies for the discrete function</li>
+                                                <li><span class="code">vertexassignments</span>, a List, the list of assignments to vertices for the discrete function</li>
                                                 <li><span class="code">edgeassignments</span>, a List, the list of assignments to edges for the discrete function</li>
                                             </ul>
-                                            Outputs:
+                                            Output:
                                             <ul>
                                                 <li>N/A</li>
                                             </ul>
@@ -276,261 +277,322 @@
                                             <ul>
                                                 <li>This creates a discrete function on the vertices of a graph.</li>
                                             </ul>
-                                        </li>
-                                        <li>
-                                            <span class="code">fn(x1, x2)</span><br>
-                                            Inputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">fn(x1, x2)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>(v,0), a Sequence, where v is a vertex of the graph G</li>
-                                                <li>(v1,v2), a Sequence, where (v1,v2) is an edge of the graph G</li>
+                                                <li><span class="code">(v, 0)</span>, a Sequence, where <span class="code">v</span> is a vertex of the graph <span class="code">G</span></li>
+                                                <li><span class="code">(v1, v2)</span>, a Sequence, where <span class="code">(v1, v2)</span> is an edge of the graph <span class="code">G</span></li>
                                             </ul>                                            
-                                            Outputs:
+                                            Output:
                                             <ul>
-                                                <li>Evaluation of the discrete function assigned on the graph G at the vertex v or edge (v1,v2)</li>
+                                                <li>Evaluation of the discrete function assigned on the graph <span class="code">G</span> at the vertex <span class="code">v</span> or edge <span class="code">(v1, v2)</span></li>
                                             </ul>                                            
                                             Notes:
                                             <ul>
-                                                <li>Must use "assign" function before using this.</li>
+                                                <li>Must use <span class="code">assign</span> function before using this.</li>
                                             </ul>
-                                        </li>
-                                        <li>
-                                            <span class="code">MorseSetOnElement(G, fn, x1, x2)</span><br>
-                                            Inputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">MorseSetOnElement(G, fn, x1, x2)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
-                                                <li>fn, a discrete function (just enter fn if assignment already provided)</li>
-                                                <li>(v,0), a Sequence, where v is a vertex of the graph G -- OR -- (v1,v2), a Sequence, where (v1,v2) is an edge of the graph G</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
+                                                <li><span class="code">fn</span>, a discrete function (just enter <span class="code">fn</span> if assignment already provided)</li>
+                                                <li><span class="code">(v, 0)</span>, a Sequence, where  is a vertex of the graph <span class="code">G</span> OR <span class="code">(v1, v2)</span>, a Sequence, where <span class="code">(v1, v2)</span> is an edge of the graph <span class="code">G</span></li>
                                             </ul>
-                                            Outputs:
+                                            Output:
                                             <ul>
-                                                <li>Provides the Morse set (class List) for a single vertex or edge of G under the assignment provided. Note that only one set gets outputted as the other for either an edge or vertex is always empty (due to the ordering on the union of V and E)</li>
+                                                <li>Provides the Morse set (class List) for a single vertex or edge of <span class="code">G</span> under the assignment provided. Note that only one set is output, as the other set for either an edge or vertex is always empty (due to the ordering on the union of <span class="code">V</span> and <span class="code">E</span>)</li>
                                             </ul>
-                                        </li>
-                                        <li>
-                                            <span class="code">isDiscreteMorseFunction(G, fn)</span><br>
-                                            Inputs:
-                                            - G, a Sequence (as defined above)
-                                            - fn, a discrete function (just enter fn if assignment already provided)
-                                            
-                                            Outputs:
-                                            - Outputs true if discrete function is Morse, false if not Morse.
-                                        </li>
-                                        <li>
-                                            <span class="code">CritPts(G, fn)</span><br>
-                                            Inputs:
-                                            - G, a Sequence (as defined above)
-                                            - fn, a discrete function (just enter fn if assignment already provided)
-                                            
-                                            Outputs:
-                                            - The critical points (verticies and edges) of G (class List).
-                                        </li>
-                                        <li>
-                                            <span class="code">toHyperGraph(G)</span><br>
-                                            Inputs:
-                                            - G, a Sequence (as defined above)
-                                            
-                                            Outputs:
-                                            - The HyperGraph (class) formation of G.
-                                            
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">isDiscreteMorseFunction(G, fn)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
+                                            <ul>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
+                                                <li><span class="code">fn</span>, a discrete function (just enter <span class="code">fn</span> if assignment already provided)</li>
+                                            </ul>
+                                            Output:
+                                            <ul>
+                                                <li>Output <span class="code">true</span> if discrete function is Morse, <span class="code">false</span> if not Morse.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">CritPts(G, fn)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
+                                            <ul>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
+                                                <li><span class="code">fn</span>, a discrete function (just enter <span class="code">fn</span> if assignment already provided)</li>
+                                            </ul>
+                                            Output:
+                                            <ul>
+                                                <li>The critical points (vertices and edges) of <span class="code">G</span> (class List).</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">toHyperGraph(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
+                                            <ul>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
+                                                <li><span class="code">fn</span>, a discrete function (just enter <span class="code">fn</span> if assignment already provided)</li>
+                                            </ul>
+                                            Output:
+                                            <ul>
+                                                <li>The HyperGraph (class) formation of <span class="code">G</span>.</li>
+                                            </ul>
                                             Notes:
-                                            Very useful! Allows one to use all the commands found here with the output:
-                                            http://www2.macaulay2.com/Macaulay2/doc/Macaulay2-1.12/share/doc/Macaulay2/EdgeIdeals/html/___Hyper__Graph.html 
-                                        </li>
-                                        <li>
-                                            <span class="code">toRegGraph(G)</span><br>
-                                            Inputs:
-                                            - G, a Sequence (as defined above)
-                                            
-                                            Outputs:
-                                            - The Graph (class) formation of G.
-                                            
+                                            <ul>
+                                                <li>Very useful! Allows one to use all the commands found here with the Output: <a href ="http://www2.macaulay2.com/Macaulay2/doc/Macaulay2-1.12/share/doc/Macaulay2/EdgeIdeals/html/___Hyper__Graph.html" target="_blank">Commands</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">toRegGraph(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
+                                            <ul>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
+                                                <li><span class="code">fn</span>, a discrete function (just enter <span class="code">fn</span> if assignment already provided)</li>
+                                            </ul>
+                                            Output:
+                                            <ul>
+                                                <li>The Graph (class) formation of <span class="code">G</span>.</li>
+                                            </ul>
                                             Notes:
-                                            Very useful! Allows one to use all the commands found here with the output:
-                                            http://www2.macaulay2.com/Macaulay2/doc/Macaulay2-1.12/share/doc/Macaulay2/EdgeIdeals/html/___Graph.html
-                                        </li>
-                                        <li>
-                                            <span class="code">AdjacencyMatrix(G)</span><br>
-                                            Inputs:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>Very useful! Allows one to use all the commands found here with the Output: <a href ="http://www2.macaulay2.com/Macaulay2/doc/Macaulay2-1.12/share/doc/Macaulay2/EdgeIdeals/html/___Graph.html" target="_blank">Commands</a></li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">AdjacencyMatrix(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>The adjacency matrix of G (class Matrix).</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                        </li>
-                                        <li>
-                                            <span class="code">DirectedIncidenceMatrix(G)</span><br>
-                                            Inputs:
+                                            Output:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>The adjacency matrix of <span class="code">G</span> (class Matrix).</li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">DirectedIncidenceMatrix(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>The incidence matrix of G (class Matrix).</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                        </li>
-                                        <li>
-                                            <span class="code">evenLaplacian(G)</span><br>
-                                            Inputs:
+                                            Output:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>The incidence matrix of <span class="code">G</span> (class Matrix).</li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">evenLaplacian(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>The even Laplacian of G (class Matrix).</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                        </li>    
-                                        <li>
-                                            <span class="code">oddLaplacian(G)</span><br>
-                                            Inputs:
+                                            Output:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>The even Laplacian of <span class="code">G</span> (class Matrix).</li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">oddLaplacian(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>The odd Laplacian of G (class Matrix).</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                        </li>       
-                                        <li>
-                                            <span class="code">H0(G)</span><br>
-                                            Inputs:
+                                            Output:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>The odd Laplacian of <span class="code">G</span> (class Matrix).</li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">H0(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>The cohomology group H^0 of G (class Module).</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                        </li>    
-                                        <li>
-                                            <span class="code">H1(G)</span><br>
-                                            Inputs:
+                                            Output:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>The cohomology group \(H^0\) of <span class="code">G</span> (class Module).</li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div> 
+                                    <div class="collapsible"><span class="code">H1(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>The cohomology group H^1 of G (class Module).</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                        </li>    
-                                        <li>
-                                            <span class="code">h0(G)</span><br>
-                                            Inputs:
+                                            Output:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>The cohomology group \(H^1\) of <span class="code">G</span> (class Module).</li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div>      
+                                    <div class="collapsible"><span class="code">h0(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>The 0th Betti number of G (class Element).</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                        </li>   
-                                        <li>
-                                            <span class="code">h1(G)</span><br>
-                                            Inputs:
+                                            Output:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li>The 0th Betti number of <span class="code">G</span> (class Element).</li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div>   
+                                    <div class="collapsible"><span class="code">h1(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>The 1st Betti number of G (class Element).</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                        </li>   
-                                        <li>
-                                            <span class="code">II(n)</span><br>
-                                            Inputs:
+                                            Output:
                                             <ul>
-                                                <li>n, an Element (i.e. a number)</li>
+                                                <li>The 1st Betti number of <span class="code">G</span> (class Element).</li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div>    
+                                    <div class="collapsible"><span class="code">II(n)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>An n x n identity matrix (class Matrix).</li>
+                                                <li><span class="code">n</span>, an Element (i.e. a number)</li>
                                             </ul>
-                                        </li>    
-                                        <li>
-                                            <span class="code">complexify(M)</span><br>
-                                            Inputs:
+                                            Output:
                                             <ul>
-                                                <li>M, a Matrix</li>
+                                                <li>An \(n \times n\) identity matrix (class Matrix).</li>
                                             </ul>
-                                            Outputs:
+                                        </div>
+                                    </div>  
+                                    <div class="collapsible"><span class="code">complexify(M)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
+                                            <ul>
+                                                <li><span class="code">M</span>, a Matrix</li>
+                                            </ul>
+                                            Output:
                                             <ul>
                                                 <li>A matrix with domain and range expanded from integers to the complex numbers (class Matrix).</li>
                                             </ul>
-                                        </li>  
-                                        <li>
-                                            <span class="code">rationalize(M)</span><br>
-                                            Inputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">rationalize(M)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>M, a Matrix</li>
+                                                <li><span class="code">M</span>, a Matrix</li>
                                             </ul>
-                                            Outputs:
+                                            Output:
                                             <ul>
                                                 <li>A matrix with domain and range expanded from integers to the rational numbers (class Matrix).</li>
                                             </ul>
-                                        </li>   
-                                        <li>
-                                            <span class="code">matrixexp(M, order)</span><br>
-                                            Inputs:
+                                        </div>
+                                    </div>   
+                                    <div class="collapsible"><span class="code">matrixexp(M, order)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>M, a Matrix</li>
-                                                <li>order, an Element (i.e. a number)</li>
+                                                <li><span class="code">M</span>, a Matrix</li>
+                                                <li><span class="code">order</span>, an Element (i.e. a number)</li>
                                             </ul>
-                                            Outputs:
+                                            Output:
                                             <ul>
                                                 <li>The exponentiation of the matrix M to the order given (class Matrix).</li>
                                             </ul>
-                                        </li>     
-                                        <li>
-                                            <span class="code">EulerChar(G)</span><br>
-                                            Inputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">EulerChar(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                            Outputs:
+                                            Output:
                                             <ul>
                                                 <li>The Euler characteristic of the graph (class Element).</li>
                                             </ul>
-                                        </li>    
-                                        <li>
-                                            <span class="code">SpecELaplacian(G)</span><br>
-                                            Inputs:
+                                        </div>
+                                    </div>
+                                    <div class="collapsible"><span class="code">SpecELaplacian(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                            Outputs:
+                                            Output:
                                             <ul>
                                                 <li>The spectrum of the even Laplacian (class Matrix).</li>
                                             </ul>
-                                        </li>  
-                                        <li>
-                                            <span class="code">SpecOLaplacian(G)</span><br>
-                                            Inputs:
+                                        </div>
+                                    </div>  
+                                    <div class="collapsible"><span class="code">SpecOLaplacian(G)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
                                             </ul>
-                                            Outputs:
+                                            Output:
                                             <ul>
                                                 <li>The spectrum of the odd Laplacian (class Matrix).</li>
                                             </ul>
-                                        </li>   
-                                        <li>
-                                            <span class="code">Kronecker(G, H)</span><br>
-                                            Inputs:
+                                        </div>
+                                    </div>     
+                                    <div class="collapsible"><span class="code">Kronecker(G, H)</span></div>
+                                    <div class="inside">
+                                        <div>
+                                            Input:
                                             <ul>
-                                                <li>G, a Sequence (as defined above)</li>
-                                                <li>H, a Sequence (as defined above) (another graph)</li>
+                                                <li><span class="code">G</span>, a Sequence (as defined above)</li>
+                                                <li><span class="code">H</span>, a Sequence (as defined above) (another graph)</li>
                                             </ul>
-                                            Outputs:
+                                            Output:
                                             <ul>
                                                 <li>The Kronecker product of the two graphs (class Matrix).</li>
                                             </ul>
-                                        </li>   
-                                    </ul>
+                                        </div>
+                                    </div>    
                                 </div>
-
+                                <hr>
                                 <h3>Mathematica</h3>
-
+                                <button type="button" class="btn btn-menu">
+                                    <a href="Mathematica_Code.nb" download>Download Mathematica Code [.nb]</a>
+                                </button>
+                                <p></p>
                             </div>
                         </div>
                     </div>
@@ -581,7 +643,7 @@
                                 <div class="row">
                                     <div class="col abstract">
                                         <h5>Quantum Graph Entropy and the Phase Space Visualization of Schrödinger's Equation<br>(Gîrjău, Moore, Wachelo)</h5>
-                                        <p>ABSTRACT: Von Neumann Graph Entropy (VNGE) is a measure of the complexity of a graph calculated using the spectrum of the graph Laplacian. Here, we shall present a brief overview of the underlying theory, some proven results and various approximation methods for VNGE. We then discuss the phase space representation of the Schrödinger equation for graphs and its visualization, as well as ongoing work on the periodicity of the solutions.</p>
+                                        <p class="fancy">ABSTRACT: Von Neumann Graph Entropy (VNGE) is a measure of the complexity of a graph calculated using the spectrum of the graph Laplacian. Here, we shall present a brief overview of the underlying theory, some proven results and various approximation methods for VNGE. We then discuss the phase space representation of the Schrödinger equation for graphs and its visualization, as well as ongoing work on the periodicity of the solutions.</p>
                                     </div>
                                     <div class="col">
                                         <a href ="Quantum_Graph_Entropy_and_the_Phase_Space_Visualization_of_Schrodingers_Equation.pdf" target="_blank">
@@ -598,7 +660,7 @@
                                 <div class="row">
                                     <div class="col abstract">
                                         <h5>Graph Topology and Discrete Morse Theory<br>(Rosevear, Tawfeek)</h5>
-                                        <p>ABSTRACT: One can adapt the tools of algebraic and differential topology to study topological properties of the graph, such as number of cycles and connected components. We use the graph chain complex and homology to motivate and define the even and odd graph Laplacians and graph de Rham calculus. We then present discrete Morse theory on a graph, including an equivalence class of Morse functions that gives rise to a simple proof of the Morse inequalities. Further directions include generalization to CW complexes, application of discrete differential forms to problems in graph quantum mechanics, and finding a closed form expression for the number of Morse equivalence classes on a given graph.</p>
+                                        <p class="fancy">ABSTRACT: One can adapt the tools of algebraic and differential topology to study topological properties of the graph, such as number of cycles and connected components. We use the graph chain complex and homology to motivate and define the even and odd graph Laplacians and graph de Rham calculus. We then present discrete Morse theory on a graph, including an equivalence class of Morse functions that gives rise to a simple proof of the Morse inequalities. Further directions include generalization to CW complexes, application of discrete differential forms to problems in graph quantum mechanics, and finding a closed form expression for the number of Morse equivalence classes on a given graph.</p>
                                     </div>
                                     <div class="col">
                                         <a href="Graph_Topology_and_Discrete_Morse_Theory.pdf" target="_blank">
@@ -636,7 +698,7 @@
                                 <div class="row">
                                     <div class="col abstract">
                                         <h5>The Mathematics of Quantum Mechanics and Networks<br>(Prof. Ivan Contreras)</h5>
-                                        <p>ABSTRACT: Mathematical Physics is a fascinating area of science that brings together different perspectives on how we understand the Physics that rules our world. This talk provides a gentle overview of a graph theoretical model of Quantum Mechanics, as an example of how we can use tools from Linear Algebra and Calculus to understand the basic principles of Quantum Mechanics.</p>
+                                        <p class="fancy">ABSTRACT: Mathematical Physics is a fascinating area of science that brings together different perspectives on how we understand the Physics that rules our world. This talk provides a gentle overview of a graph theoretical model of Quantum Mechanics, as an example of how we can use tools from Linear Algebra and Calculus to understand the basic principles of Quantum Mechanics.</p>
                                     </div>
                                     <div class="col">
                                         <a href="The_Mathematics_of_Quantum_Mechanics_and_Networks.pdf" target="_blank">
@@ -655,7 +717,7 @@
                                 <div class="row">
                                     <div class="col abstract">
                                         <h5>Quantum Mechanics and the Shape of Graphs<br>(Prof. Ivan Contreras)</h5>
-                                        <p>ABSTRACT: Quantum Physics has revolutionized the way we understand our world. Since the beginning of the 20th century, beautiful Mathematics has been devised and implemented in order to achieve such success. This talk intends to give an overview of a discretized model of Quantum Mechanics: the Schrödinger equation on graphs. We will use the combinatorial graph Laplacian to describe certain properties of finite graphs such as topological invariants, number of generalized walks, and entropy.  No prior knowledge of Physics or Graph Theory will be assumed.</p>
+                                        <p class="fancy">ABSTRACT: Quantum Physics has revolutionized the way we understand our world. Since the beginning of the 20th century, beautiful Mathematics has been devised and implemented in order to achieve such success. This talk intends to give an overview of a discretized model of Quantum Mechanics: the Schrödinger equation on graphs. We will use the combinatorial graph Laplacian to describe certain properties of finite graphs such as topological invariants, number of generalized walks, and entropy.  No prior knowledge of Physics or Graph Theory will be assumed.</p>
                                     </div>
                                     <div class="col">
                                         <a href="#slides" target="_blank">
@@ -682,14 +744,12 @@
                         <div class="right col-10">
                             <h1>REFERENCES</h1>
                             <div class="section">
-                                <ul class="unstyled">
-                                    <li>Minello, Giorgia, et al. <em>On the Von Neumann Entropy of Graphs</em>, Journal of Complex Networks, no. 00, 23 Jan. 2018, doi:10.1093/comnet/cny028.</li>
-                                    <li>C.  Yu.Super-walk Formulae for Even and Odd Laplacians in Finite Graphs. Rose-Hulman Undergrad-uate Mathematics Journal:  Vol. 18:  Iss. 1, Article 16 (2017)</li>
-                                    <li>F. Sanchez. Eigenvalues  and  Eigenvectors  of  Subdirect  Sums. Proceedings of the 9th WSEAS Interna-tional Conference on Applied Mathematics, Istanbul, Turkey (2006)</li>
-                                    <li>I. Contreras, B.  Xu.The Graph Laplacian and Morse InequalitiesPacific Journal of Mathematics, Vol.300 (2019), No. 2, 331 - 345</li>
-                                    <li>L.   Han, E.   Hancock,   R. Wilson.Characterizing  Graphs  Using  Approximate  von  Neumann  Entropy.Pattern Recognition and Image Analysis (2011), p. 484-491</li>
-                                    <li>R. Forman.A User’s Guide to Discrete Morse TheoryS ́eminaire Lotharingien de Combinatoire 48 (2002)</li>
-                                </ul>
+                                <p class="fancy">[1] Minello, Giorgia, et al. <em>On the Von Neumann Entropy of Graphs</em>, Journal of Complex Networks, no. 00, 23 Jan. 2018, doi:10.1093/comnet/cny028.</p>
+                                <p class="fancy">[2] C.  Yu.Super-walk Formulae for Even and Odd Laplacians in Finite Graphs. Rose-Hulman Undergrad-uate Mathematics Journal:  Vol. 18:  Iss. 1, Article 16 (2017)</p>
+                                <p class="fancy">[3] F. Sanchez. Eigenvalues  and  Eigenvectors  of  Subdirect  Sums. Proceedings of the 9th WSEAS Interna-tional Conference on Appped Mathematics, Istanbul, Turkey (2006)</p>
+                                <p class="fancy">[4] I. Contreras, B.  Xu.The Graph Laplacian and Morse InequaptiesPacific Journal of Mathematics, Vol.300 (2019), No. 2, 331 - 345</p>
+                                <p class="fancy">[5] L.   Han, E.   Hancock,   R. Wilson.Characterizing  Graphs  Using  Approximate  von  Neumann  Entropy.Pattern Recognition and Image Analysis (2011), p. 484-491</p>
+                                <p class="fancy">[6] R. Forman.A User’s Guide to Discrete Morse TheoryS ́eminaire Lotharingien de Combinatoire 48 (2002)</p>
                             </div>
                         </div>
                     </div>
